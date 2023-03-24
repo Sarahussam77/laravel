@@ -33,6 +33,17 @@
     <img class="mt-2" src="{{'/'.'storage/'.$post->image}}" width="250" alt=""/>
   </div>
   @endif
+  @php
+$newtags=array();
+ for($i=0;$i<count($post->tags);$i++){
+array_push($newtags,$post->tags[$i]['name']);
+}
+   
+  @endphp 
+  <div class="form-group">
+    <label for="user" class="form-label">Tags</label>
+    <input class="form-control" name="tags"  id="formFile" value="{{implode(',',$newtags)}}">
+  </div>
   <div class="form-group ">
   <label class="mt-2">Post Creator</label>
   <select name="post_creator" class="form-control">

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Requests;
-
+use App\Rules\ThreePostsForUser;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StorePostRequest extends FormRequest
@@ -24,8 +24,9 @@ class StorePostRequest extends FormRequest
         return [
             'title' =>['required','min:3','unique:posts,title'],
             'description' =>['required','min:10'],
-            'post_creator' => ['required','exists:users,id'],
+            'post_creator' => ['required','exists:users,id',new ThreePostsForUser],
             'image'=> ['max:2078','mimes:png,jpg']
+
         ];
     }
 }

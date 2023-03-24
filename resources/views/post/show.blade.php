@@ -24,6 +24,11 @@
         </div>
         <div class="card-body">
             <p class="card-title"><span class="fw-bold">Author:</span> {{ optional($post->user)->name ?? 'Not Found' }}</h5>
+             
+              <p class="card-title"><span class="fw-bold">Tags:
+                @foreach($post->tags as $tag)
+                </span> {{$tag->name }}</h5>
+                @endforeach
             <p class="card-text"><span class="fw-bold">Email:</span> {{optional($post->user)->email ?? 'Not Found'}}</p>
                 <p class=" text-danger card-text"><span class="fw-bold">created At:</span> {{ $post->created_at->format('l jS \\of F Y h:i:s A') }}</h5>
         </div>

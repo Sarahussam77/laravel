@@ -36,13 +36,17 @@ class PostController extends Controller
     {   
         $image = $request->file('image')->store('images',['disk' => "public"]);
         
-        Post::create([
+        
+        $post=Post::create([
             'title'=>request()->title,
             'description'=>request()->description,
             'user_id' => request()->post_creator,
-            'image' =>$image
+            'image' =>$image,
+            
         ]);
-       
+        $tags = explode(",", $request->tags);
+        $post->tags=$tags;
+        $post->syncTags($tags);
         return redirect()->route('posts.index');
     }
 
@@ -66,6 +70,9 @@ class PostController extends Controller
         $post->title = $request->input('title');
         $post->description =$request->input('description');
         $post->user_id = $request->input('post_creator');
+        $tags=explode(",", $request->input('tags'));
+        $post->syncTags($tags);
+        
         if($request->hasFile("image")){
 
             Storage::disk("public")->delete($post->image);

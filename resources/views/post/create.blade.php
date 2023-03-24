@@ -29,6 +29,10 @@
     <label for="user" class="form-label">Image</label>
     <input class="form-control" name="image" type="file" id="formFile">
   </div>
+  <div class="form-group">
+    <label for="user" class="form-label">Tags</label>
+    <input class="form-control" name="tags"  id="formFile">
+  </div>
   <div class="form-group ">
   <label class="mt-2">Post Creator</label>
   
