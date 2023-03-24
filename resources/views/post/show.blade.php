@@ -3,17 +3,22 @@
 @section('title') Show @endsection
 
 @section('content')
-    <div class="card mt-5">
+    <div class="card m-3">
         <div class="card-header">
             Post Info
         </div>
         <div class="card-body">
             <h5 class="card-title">Title: {{$post['title']}}</h5>
             <p class="card-text">Description: {{$post['description']}}</p>
+            {{-- <img src="{{asset($post->image)}}"> --}}
+            {{-- @dd(Storage::url($post->image),$post->image,asset($post->image)); --}}
+            @if($post->image !=null)
+            <img src="{{'/'.'storage/'.$post->image}}" width="250" alt=""/>
+            @endif
         </div>
     </div>
 
-    <div class="card mt-5">
+    <div class="card m-3">
         <div class="card-header">
             Post Creator Info
         </div>
@@ -25,7 +30,7 @@
     </div>
     <div>
      
-      <div class="card my-3">
+      <div class="card m-3">
         <div class="card-header">
           Comments
         </div>
@@ -53,7 +58,7 @@
       </div>
       
           
-        <div class="card mt-3">
+        <div class="card m-3">
           <div class="card-header">
             add new comment
           </div>
